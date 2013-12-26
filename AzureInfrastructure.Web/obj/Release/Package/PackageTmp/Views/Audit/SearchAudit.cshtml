@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AzureInfrastructure.Web.ViewModels.Audit.SearchViewModel>
+@{
+    ViewBag.Title = "View Audit Records";
+}
+
+<div class="container">
+    <div class="page-header">View Audit Records</div>
+
+    <div class="row">
+        <form action="\Audit\SearchAudit" method="post">
+            <div class="form-group">
+                <label class="control-label" for="">SR Number</label>
+                <input type="text" class="form-control" placeholder="Enter SR Number..." name="srNumber" />
+            </div>
+            <div class="form-group">
+                <button type="reset" class="btn btn-default">Reset</button>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        @if (Model != null)
+        {
+            <h5>Search Results:</h5>
+            <table class="table table-bordered">
+                @foreach (var entry in Model)
+                {
+                    <tr>
+                        <td>@entry.SRNumber</td>
+                        <td>@entry.Content</td>
+                    </tr>                
+                }
+            </table>
+        }
+    </div>
+</div>

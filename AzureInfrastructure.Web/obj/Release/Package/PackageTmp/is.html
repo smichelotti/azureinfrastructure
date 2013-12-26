@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#azi-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Azure Infrastructure</a>
+        </div>
+
+        <!-- Main Menu -->
+        <div class="collapse navbar-collapse" id="azi-navbar-collapse-1">
+            <!-- Menu Functions -->
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/Dashboard/Index">Dashboard</a></li>
+                <li><a href="#">View Audit Logs</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Provision Ticket<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Submit</a></li>
+                        <li><a href="#">Estimate</a></li>
+                        <li><a href="#">Approve</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Virtual Machines<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/VM/CreateVMs">Create</a></li>
+                        <li><a href="/VM/ExpandVMs">Expand</a></li>
+                        <li><a href="/VM/ShrinkVMs">Shrink</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/VM/ShutdownVMs">Shutdown</a></li>
+                        <li><a href="/VM/DeleteVMs">Delete</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Menu User Logout -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">@User.Identity.Name</button>
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="glyphicon glyphicon-user"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <form action="\Audit\Search" method="post">
+                <div class="form-group">
+                    <label class="control-label" for="">SR Number</label>
+                    <input type="text" class="form-control" placeholder="Enter SR Number..." />
+                </div>
+                <div class="form-group">
+                    <button type="reset" class="btn btn-default">Reset</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="container">
+            <div class="col-md-6 col-sm-4">
+                <form action="/VM/CreateVMs">
+                    <div class="form-group">
+                        <label class="control-label" for="SRNumber">Service Request</label>
+                        <input type="text" class="form-control" id="SRNumber" placeholder="Enter SR Number..." />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="VMType">VM Type</label>
+                        <select class="form-control" id="VMType">
+                            <option value="1">Windows 2012 (Base) </option>
+                            <option value="2">Base + SQL Server</option>
+                            <option value="3">Base + App Fabric</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="VMSize">VM Size</label>
+                        <select class="form-control" id="VMSize">
+                            <option value="5">Extra Large</option>
+                            <option value="4">Large</option>
+                            <option value="3">Medium</option>
+                            <option value="2">Small</option>
+                            <option value="1">Extra Small</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="NumberOfVMs">Number Of VMs</label>
+                        <input type="text" class="form-control" name="NumberOfVM" placeholder="Enter Number of Virtual Machines..." />
+                    </div>
+                    <div class="form-group col-md-offset-5">
+                        <button type="reset" class="btn">Reset</button>
+                        <button type="submit" class="btn btn-primary">Create VMs</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-6 col-sm-8">
+                <div class="panel panel-success invisible" id="liveTrace">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Live Provisiong Trace <span class="badge">1/5</span></h4>
+                    </div>
+                    <div class="panel-body">
+                        Lorem Ipsum...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table-bordered ">
+
+        </table>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#liveTrace').animate();
+
+
+            })
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "LiveTrace";
+}
+<div class="container">
+    <div class="page-header">
+        Live Trace
+    </div>
+    <div class="well" id="traceBox"></div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.0.1.js"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    <script type="text/javascript">
+        $(function () {
+            var traceHub = $.connection.liveTraceSignalRHub;
+            traceHub.client.receiveTraceMesssage = function (message) {
+
+                var alertType;
+                switch (message.Type) {
+                    case "SUCCESS":
+                        alertType = "alert-success";
+                        break;
+                    case "INFO":
+                        alertType = "alert-info";
+                        break;
+                    case "WARNING":
+                        alertType = "alert-warning";
+                        break;
+                    case "ERROR":
+                        alertType = "alert-danger";
+                        break;                    
+                }
+
+                $('#traceBox').append('<div class="' + alertType + '">' + message.Title + '</div>');
+            };
+
+            traceHub.client.clearAllTrace = function () {
+                $('#traceBox').remove();
+            }
+
+            $.connection.hub.start();
+        })
+    </script>
+}

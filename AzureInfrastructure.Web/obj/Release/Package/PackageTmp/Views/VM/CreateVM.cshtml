@@ -1,0 +1,52 @@
+﻿@model AzureInfrastructure.Web.ViewModels.VM.CreateVMViewModel
+
+@{
+    ViewBag.Title = "Create Virtual Machines";
+}
+
+<div class="container">
+    <div class="page-header">Create Virtual Machines</div>
+
+    <!-- Create VM Form -->
+    <div class="row">
+        <!-- Message -->
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+        <!-- Input Form -->
+        <form action="/VM/CreateVM" id="frmCreateVM" method="post">
+            <div class="form-group">
+                <label class="control-label" for="SRNumber">Service Request</label>
+                <input type="text" class="form-control" id="SRNumber" name="SRNumber" placeholder="Enter SR Number..." />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="VMType">VM Type</label>
+
+                <select class="form-control" id="VMType" name="VMType">
+                    @foreach (var item in ViewBag.VMTypeSelection)
+                    {           
+                        <option value='@item.Id'>@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="VMSize">VM Size</label>
+                <select class="form-control" id="VMSize" name="VMSize">
+                    @foreach (var item in ViewBag.VMSizeSelection)
+                    {
+                        <option value='@item.Id'>@item.Size</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="NumberOfVMs">Number Of VMs</label>
+                <input type="text" class="form-control" name="NumberOfVM" placeholder="Enter Number of Virtual Machines..." />
+            </div>
+            <div class="form-group">
+                <button type="reset" class="btn">Reset</button>
+                <button type="submit" class="btn btn-primary">Create Virtual Machines</button>
+            </div>
+        </form>
+    </div>
+</div>
