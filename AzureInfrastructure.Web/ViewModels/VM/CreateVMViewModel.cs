@@ -7,10 +7,9 @@ namespace AzureInfrastructure.Web.ViewModels.VM
 {
     public class CreateVMViewModel
     {
-        public string SRNumber { get; set; }
+        public string RequestNumber { get; set; }
         public int VMType { get; set; }
         public int VMSize { get; set; }
         public int NumberOfVM { get; set; }
-
     }
 }

@@ -17,7 +17,7 @@
 
 
 using AzureInfrastructure.Web.ServiceProviders;
-using AzureInfrastructure.Web.ServiceProviders.AuditProvider;
+using AzureInfrastructure.Web.ServiceProviders.ProvisionRequestProvider;
 using AzureInfrastructure.Web.ServiceProviders.VMProvider;
 using AzureInfrastructure.Web.ServiceProviders.SelectionProvider;
 
@@ -36,9 +36,8 @@ namespace AzureInfrastructure.Web.DependencyResolution {
                             //        });
                             //                x.For<IExample>().Use<Example>();
                             x.For<IVMProvider>().Use<VMPowerShellProvider>();
-                            x.For<IAuditProvider>().Use<AuditAzureTableProvider>();
+                            x.For<IProvisionRequestProvider>().Use<ProvisonRequestAzureTableProvider>();
                             x.For<ISelectionProvider>().Use<SelectionInLineProvider>();
-                            x.For<IAuditProvider>().Use<AuditAzureTableProvider>();
                             x.For<ILiveTraceProvider>().Use<LiveTraceSignalRProvider>()
                                                     .Ctor<string>("hubUrl")
                                                     .Is(ConfigurationManager.AppSettings["SignalRHubUrl"]);

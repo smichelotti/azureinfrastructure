@@ -8,7 +8,7 @@
     <div class="page-header">Create Virtual Machines</div>
 
     <!-- Create VM Form -->
-    <div class="row">
+    <div class="col-md-4">
         <!-- Message -->
         @if (!string.IsNullOrEmpty(ViewBag.Message))
         {
@@ -17,8 +17,8 @@
         <!-- Input Form -->
         <form action="/VM/CreateVM" id="frmCreateVM" method="post">
             <div class="form-group">
-                <label class="control-label" for="SRNumber">Service Request</label>
-                <input type="text" class="form-control" id="SRNumber" name="SRNumber" placeholder="Enter SR Number..." />
+                <label class="control-label" for="Number">Request Number</label>
+                <input type="text" class="form-control" id="SRNumber" name="RequestNumber" placeholder="Enter Request Number..." />
             </div>
             <div class="form-group">
                 <label class="control-label" for="VMType">VM Type</label>
@@ -40,7 +40,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="control-label" for="NumberOfVMs">Number Of VMs</label>
+                <label class="control-label" for="NumberOfVMs">Number Of Virtual Machines</label>
                 <input type="text" class="form-control" name="NumberOfVM" placeholder="Enter Number of Virtual Machines..." />
             </div>
             <div class="form-group">

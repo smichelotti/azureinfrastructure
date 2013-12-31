@@ -39,14 +39,15 @@ namespace AzureInfrastructure.Web.Controllers
             return View();
         }
 
+        // POST: /VM/
         [HttpPost]
         [Log("INFO")]
         public ActionResult CreateVM(CreateVMViewModel setting)
         {
-            var message = string.Format("Started Service Request {0} for {1} VMs", setting.SRNumber, setting.NumberOfVM);
+            var message = string.Format("Started Service Request {0} for {1} VMs", setting.RequestNumber, setting.NumberOfVM);
             ViewBag.Message = message; 
 
-            _liveTrace.SendTraceMessage(new TraceMessage(){Title=message, Type=TraceMessage.InfoType});
+            _liveTrace.SendTraceMessage(new TraceMessage(){Title=message, Type=TraceMessage.Info});
 
             LoadCreateVMSelectionsInViewBag();
             return View();

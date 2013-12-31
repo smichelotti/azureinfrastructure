@@ -18,7 +18,7 @@ azi.EnableLiveTracePulse = function ($pulseElement) {
     traceHub.client.receiveTraceMesssage = function (message) {
         for (var i = 0; i < 5; i++){
             $pulseElement.fadeIn(200);
-            $pulseElement.fadeOut(400);
+            $pulseElement.fadeOut(300);
         }
     }
 

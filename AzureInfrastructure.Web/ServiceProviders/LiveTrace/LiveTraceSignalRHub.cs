@@ -12,7 +12,7 @@ namespace AzureInfrastructure.Web.ServiceProviders.LiveTrace
     {
         public void SendTraceMessage(TraceMessage message)
         {
-            Clients.All.ReceiveTraceMesssage(new TraceMessageViewModel() { Type = message.Type, Title = message.Title });
+            Clients.All.ReceiveTraceMesssage(new TraceMessageViewModel() { Type = message.Type.ToString(), Title = message.Title });
         }
 
         public void ClearAllTrace()

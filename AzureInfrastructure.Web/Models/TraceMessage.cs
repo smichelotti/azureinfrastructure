@@ -9,9 +9,12 @@ namespace AzureInfrastructure.Web.Models
     {
         public string Type { get; set; }
         public string Title { get; set; }
-        public const string SuccessType = "SUCCESS";
-        public const string InfoType = "INFO";
-        public const string WarningType = "WARNING";
-        public const string ErrorType = "ERROR";
+
+        public const string Debug = "DEBUG";
+        public const string Info = "INFO";
+        public const string Warning = "WARNING";
+        public const string Success = "SUCCESS";
+        public const string Error = "ERROR";
+
     }
 }

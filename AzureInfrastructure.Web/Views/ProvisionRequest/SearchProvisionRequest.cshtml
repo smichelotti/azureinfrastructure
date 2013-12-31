@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AzureInfrastructure.Web.ViewModels.ProvisionRequest.SearchProvisionRequestViewModel>
+@{
+    ViewBag.Title = "Search Provision Requests";
+}
+
+<div class="container">
+    <div class="page-header">Search Provision Requests</div>
+
+    <div class="col-md-4">
+        <form action="\ProvisionRequest\SearchProvisionRequest" method="post">
+            <div class="form-group">
+                <label class="control-label" for="">Request Number</label>
+                <input type="text" class="form-control" placeholder="Search for Request Number..." name="requestNumber" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Submitted By</label>
+                <input type="text" class="form-control" placeholder="Search for Requests submitted by..." name="requestSubmittedBy" />
+            </div>
+            <div class="form-group">
+                <button type="reset" class="btn btn-default">Reset</button>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        @if (Model != null)
+        {
+            <h5>Search Results:</h5>
+            <table class="table table-bordered">
+                @foreach (var entry in Model)
+                {
+                    <tr>
+                        <td>@entry.RequestNumber</td>
+                    </tr>                
+                }
+            </table>
+        }
+    </div>
+</div>
